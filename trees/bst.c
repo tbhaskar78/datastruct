@@ -1,3 +1,14 @@
+/****************************************
+
+* File Name : bst.c
+
+* Creation Date : 28-08-2020
+
+* Last Modified : Friday 28 August 2020 08:58:14 AM
+
+* Created By :  Bhaskar Tallamraju
+
+*****************************************/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -10,6 +21,7 @@ typedef struct node_ {
     struct node_ *link[2];
 } node_t;
 
+/* find max value in the tree */
 node_t *findmax(node_t *root)
 {
     if (root == NULL) return NULL;
@@ -19,6 +31,7 @@ node_t *findmax(node_t *root)
     }
 }
 
+/* find min value in the tree */
 node_t *findmin(node_t *root)
 {
     if (root == NULL) return NULL;
@@ -28,6 +41,7 @@ node_t *findmin(node_t *root)
     }
 }
 
+/* delete a node from the tree and adjust the tree */
 node_t *deletenode(node_t *root, int val)
 {
     if(root == NULL) return root;
@@ -64,6 +78,7 @@ node_t *deletenode(node_t *root, int val)
     return root;
 }
 
+/* create a new node, allocate memory for it */
 node_t *make_node(int val) 
 {
     node_t *temp = malloc(sizeof(struct node_));
@@ -73,6 +88,7 @@ node_t *make_node(int val)
     return temp;
 }
 
+/* insert the newly created node in the right place in BST */
 node_t *insert(node_t *root, int val)
 {
     if (root == NULL) root = make_node(val);
@@ -88,6 +104,7 @@ node_t *insert(node_t *root, int val)
     return root;
 }
 
+/* recursively print in postorder */
 void postorder(node_t *root)
 {
     if (root == NULL) return;
@@ -96,6 +113,7 @@ void postorder(node_t *root)
     printf("%d, ", root->data);
 }
 
+/* recursively print in preorder */
 void preorder(node_t *root)
 {
     if (root == NULL) return;
@@ -104,6 +122,7 @@ void preorder(node_t *root)
     preorder(root->link[RIGHT]);
 }
 
+/* recursively print in inorder */
 void inorder(node_t *root)
 {
     if (root == NULL) return;
@@ -112,16 +131,16 @@ void inorder(node_t *root)
     inorder(root->link[RIGHT]);
 }
 
+/* recursively print in levelorder */
 void levelorder(node_t *root, int level)
 {
     if (root == NULL) return;
     if (level == 1) printf("%d|", root->data);
     levelorder(root->link[LEFT], level);
     levelorder(root->link[RIGHT], level);
-
-
 }
 
+/* recursively print in spiralorder */
 void spiralorder(node_t *root, int level, int toggle)
 {
    if (root == NULL) return;
@@ -136,6 +155,7 @@ void spiralorder(node_t *root, int level, int toggle)
    }
 }
 
+/* find the max depth of the tree or height of tree */
 int maxdepth(node_t *root) 
 {
     if(root == NULL) return 0;
@@ -187,3 +207,5 @@ int main(void)
     printf("min in the tree is %d\n", findmin(tree_root)->data);
     printf("max in the tree is %d\n", findmax(tree_root)->data);
 };
+
+/* EOF */
