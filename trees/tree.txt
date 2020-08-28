@@ -1,0 +1,11 @@
+1. The height of a node is the length of the longest downward path to a leaf from that node
+2. A node that has a child is called the child's parent node (or ancestor node, or superior). 
+3. Nodes that do not have any children are called leaf nodes. They are also referred to as terminal nodes.
+4. The depth of a node is the length of the path to its root (i.e., its root path). This is commonly needed 
+   in the manipulation of the various self balancing trees, AVL Trees in particular.
+
+
+traversals:
+    pre-order -> visit left right
+    in-order  -> left visit right
+    post-order -> left right visit
